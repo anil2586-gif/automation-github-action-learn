@@ -1,17 +1,9 @@
 ---
 name: playwright test across environments and tags
 on:
-  push:
-    branches:
-      - main
-      - master
-  pull_request:
-    branches:
-      - main
-      - master
+  workflow_dispatch: 
 jobs:
   playwright:
-
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo
@@ -25,8 +17,13 @@ jobs:
       - name: install browsers
         run: npx playwright install --with-deps
       - name: run playwright test
-        run: npx playwright test
-  playwright-test:
-    name: run playwright test from other repo
-    needs: playwright
-    uses: anil2586-gif/learn-githubactions-sauce-demo/.github/workflows/playwright-my.yml@main
+        run: npx playwright test    
+      - name: run playwright test from other repo
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{secrets.REPO_ACCESS_TOKEN}}
+          repository: anil2586-gif/learn-githubactions-sauce-demo
+          event-type: my-event  
+        
+        
+        
