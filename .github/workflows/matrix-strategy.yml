@@ -11,7 +11,7 @@ on:
       - master
 jobs:
   playwright:
-    timeout-minutes: 60
+
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo
