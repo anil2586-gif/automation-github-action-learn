@@ -4,10 +4,10 @@ on:
     branches: ['main','master']
   pull_request:
     branches: ['main', 'master']
-  workflow_dispatch: 
+
 
 jobs:
-  playwright-matrix:
+  playwright:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -26,6 +26,6 @@ jobs:
         
   playwright-test:
    name: run playwright test from other repo
-   needs: playwright-matrix
+   needs: playwright
    uses: anil2586-gif/learn-githubactions-sauce-demo/.github/workflows/playwright-my.yml@main
   
