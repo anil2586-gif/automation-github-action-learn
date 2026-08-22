@@ -24,4 +24,8 @@ jobs:
       - name: run playwright test
         run: npx playwright test
         
-   
+  playwright-test:
+   name: run playwright test from other repo
+   needs: playwright-matrix
+   uses: anil2586-gif/learn-githubactions-sauce-demo/.github/workflows/playwright-my.yml@main
+  
