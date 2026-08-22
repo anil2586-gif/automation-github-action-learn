@@ -1,11 +1,14 @@
+---
 name: playwright test across environments and tags
 on:
   push:
-    branches: ['main','master']
+    branches:
+      - main
+      - master
   pull_request:
-    branches: ['main', 'master']
-
-
+    branches:
+      - main
+      - master
 jobs:
   playwright:
     timeout-minutes: 60
@@ -23,9 +26,7 @@ jobs:
         run: npx playwright install --with-deps
       - name: run playwright test
         run: npx playwright test
-        
   playwright-test:
-   name: run playwright test from other repo
-   needs: playwright
-   uses: anil2586-gif/learn-githubactions-sauce-demo/.github/workflows/playwright-my.yml@main
-  
+    name: run playwright test from other repo
+    needs: playwright
+    uses: anil2586-gif/learn-githubactions-sauce-demo/.github/workflows/playwright-my.yml@main
